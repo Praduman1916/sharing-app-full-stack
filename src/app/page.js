@@ -1,29 +1,13 @@
-
 'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-import Header from '@/components/ui/Header';
-import MobilePreview from '@/components/ui/MobilePreview';
-import LinkEditor from '@/components/ui/LinkEditor';
-import { useState } from 'react';
+export default function Home() {
+  const router = useRouter();
 
-export default function DashboardPage() {
-  const [links, setLinks] = useState([]);
+  useEffect(() => {
+    router.replace('/login');
+  }, [router]);
 
-  return (
-    <div className="min-h-screen bg-gray-50 relative">
-      <Header className="hidden md:block" /> {/* Desktop only */}
-
-      <main className="flex flex-col lg:flex-row h-full pb-16 md:pb-0">
-        {/* Left: Mobile Preview (only for lg and above) */}
-        <div className="hidden lg:flex lg:w-1/2 border-r border-gray-200 justify-center items-center p-6">
-          <MobilePreview links={links} />
-        </div>
-
-        {/* Right: Link Editor */}
-        <div className="w-full lg:w-1/2 p-4 sm:p-6 max-w-3xl mx-auto">
-          <LinkEditor links={links} setLinks={setLinks} />
-        </div>
-      </main>      
-    </div>
-  );
+  return null;
 }
